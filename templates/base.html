@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Books Demo Application</title>
+    </head>
+    <body>
+        <div>
+            {% for message in get_flashed_messages() %}
+                <div>{{message}}</div>
+            {% endfor %}
+            {% if error %}
+                <p><strong>Error: </strong>{{error}}</p>
+            {% endif %}
+            <!-- Inheritance block -->
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

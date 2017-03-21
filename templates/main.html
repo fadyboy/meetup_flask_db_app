@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Welcome to the Books application</h2>
+    <p><a href="{{url_for('logout')}}">Log Out</a></p>
+    <h3>Current books list</h3>
+    {% for book in books %}
+        <div>
+            Author: {{book.author}}<br/>
+            Title: {{book.title}}<br/>
+            Genre: {{book.genre}}<br/>
+            Price: ${{book.price}}<br/>
+            <br/>
+        </div>
+    {% endfor %}
+{% endblock %}
