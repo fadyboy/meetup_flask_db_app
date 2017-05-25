@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div>
+            <h2>Welcome to the Main Books application</h2>
+            <p><a href="{{url_for('add_book')}}">Add Book</a></p>
+            <h3>Current list of books</h3>
+            {% for book in books %}
+                <div>
+                    Author: {{book.author}}<br />
+                    Title: {{book.title}}<br />
+                    Genre: {{book.genre}}<br />
+                    Price: ${{book.price}}<br />
+                    <a href="{{url_for('edit', book_id=book.id, author=book.author, title=book.title, genre=book.genre, price=book.price)}}">Edit Book</a>&nbsp;&nbsp;
+                    <a href="{{url_for('delete', book_id=book.id, author=book.author, title=book.title, genre=book.genre, price=book.price)}}">Delete Book</a><br>
+                    <br />
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

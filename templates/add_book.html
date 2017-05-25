@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <div>
+        <p><a href="{{url_for('main')}}">List Books</a></p>
+        <h3>Add new book</h3>
+        <form action="{{url_for('add_book')}}" method="post">
+            Author<br/>
+            <input type="text" name="author" /><br/>
+            Title<br>
+            <input type="text" name="title"><br>
+            Genre<br>
+            <input type="text" name="genre"/><br>
+            Price<br>
+            <input type="text" name="price"/><br>
+            <br>
+            <button type="submit">Add Record</button><br/>
+
+        </form>
+        {% if msg %}
+            {{msg}}
+        {% endif %}
+        
+    </div>
+{% endblock %}
