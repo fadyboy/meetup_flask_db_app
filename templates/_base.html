@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to the Books application</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
+</head>
+<body>
+    <div>
+        {% for message in get_flashed_messages() %}
+            <div>{{ message }}</div>
+        {% endfor %}
+        {% if error %}
+            <div>{{ error }}</div>
+        {% endif %}
+
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

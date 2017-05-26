@@ -43,3 +43,6 @@ def login():
             return redirect(url_for('main'))
 
     return render_template('login.html')
+
+
+#TODO:Create '/' route to have a function that displays books but restricts add/edit/delete functionality
