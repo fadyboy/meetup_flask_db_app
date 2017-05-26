@@ -22,3 +22,24 @@ def login_required(func):
             return redirect(url_for('login'))
 
     return wrapper
+
+
+@app.route("/logout/")
+def logout():
+    session.pop("logged_in", None)
+    flash("Goodbye!")
+    return redirect(url_for('login'))
+
+
+@app.route("/", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        if request.form[""] != app.config["USERNAME"] or request.form[""] != app.config["PASSWORD"]:
+            error = "Invalid login credentials"
+            return render_template('login.html', error=error)
+
+        else:
+            session["logged_in"] = True
+            return redirect(url_for('main'))
+
+    return render_template('login.html')
