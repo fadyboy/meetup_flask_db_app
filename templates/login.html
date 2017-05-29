@@ -1,8 +1,7 @@
 {% extends '_base.html' %}
 
 {% block content %}
-<h1>Welcome to the Books Application</h1>
-<h3>Please login to be able to add, edit, and delete books</h3>
+<p>Click <a href="{{url_for('main')}}">here</a> to go back to home page</p>
 <form action="{{url_for('login')}}" method="post">
     <div class="input-group">
         <label for="name">

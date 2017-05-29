@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+{% block content %}
+    <h3>Add a new book record</h3>
+    <form action="{{url_for('add')}}" method="post">
+        <div class="input-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" />
+        </div>
+        <div class="input-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" />
+        </div>
+        <div class="input-group">
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" />
+        </div>
+        <div class="input-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" />
+        </div>
+        <div>
+            <button type="submit">Add Book</button>
+        </div>
+    </form>
+    {% if message %}
+        <p>Book successfully added!</p>
+    {% endif %}
+    <p>Click <a href="{{url_for('main')}}">here</a> to go back to the main page </p>
+{% endblock %}

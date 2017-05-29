@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+{% block content %}
+<h1>Welcome to the Books Application</h1>
+{% if session['logged_in'] %}
+    <h3>Welcome {{ session['username'] }}, click here to <a href="{{url_for('logout')}}">logout</a></h3>
+    <p>Click link to <a href="{{url_for('add')}}">Add Book</a></p>
+{% else %}
+    <h3>Please <a href="{{url_for('login') }}">login</a> to be able to add, edit, and delete books</h3>
+{% endif %}
+{% for book in books %}
+    <div>
+        Author: {{ book.Author }} <br />
+        Title: {{ book.Title }} <br />
+        Genre: {{ book.Genre }} <br />
+        Price: ${{ book.Price}} <br /><br />
+        {% if session['logged_in'] %}
+            <a href="{{url_for('edit')}}">Edit Book</a>&nbsp;&nbsp;
+            <a href="{{url_for('delete')}}">Delete Book</a><br /><br />
+        {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}
