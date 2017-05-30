@@ -85,9 +85,49 @@ def add():
 
 
 
-@app.route('/edit')
+@app.route('/edit', methods=["GET", "POST"])
 def edit():
-    pass
+    # get book details for query string
+    book_id = request.args.get("book_id")
+    author = request.args.get("author")
+    title = request.args.get("title")
+    genre = request.args.get("genre")
+    price = request.args.get("price")
+
+    book = {
+        "book_id":book_id,
+        "author":author,
+        "title":title,
+        "genre":genre,
+        "price":price
+    }
+    msg = ""
+    if request.method == "POST":
+        g.db = connect_db()
+        conn = g.db.cursor()
+        book_id = request.form["book_id"]
+        author = request.form["author"]
+        title = request.form["title"]
+        genre = request.form["genre"]
+        price = request.form["price"]
+
+        conn.execute("UPDATE books SET Author=?, Title=?, Genre=?, Price=? WHERE Id=?", (author, title, genre, price, book_id))
+
+        book = {
+            "book_id":book_id,
+            "author":author,
+            "title":title,
+            "genre":genre,
+            "price":price
+        }
+
+        g.db.commit()
+        g.db.close()
+
+        msg = "Record successfully updated"
+
+    return render_template('edit.html', message=msg, book=book)
+
 
 
 

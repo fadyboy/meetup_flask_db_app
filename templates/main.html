@@ -14,7 +14,7 @@
         Genre: {{ book.Genre }} <br />
         Price: ${{ book.Price}} <br /><br />
         {% if session['logged_in'] %}
-            <a href="{{url_for('edit')}}">Edit Book</a>&nbsp;&nbsp;
+            <a href="{{url_for('edit', book_id=book.Book_id, author=book.Author, title=book.Title, genre=book.Genre, price=book.Price)}}">Edit Book</a>&nbsp;&nbsp;
             <a href="{{url_for('delete')}}">Delete Book</a><br /><br />
         {% endif %}
     </div>
